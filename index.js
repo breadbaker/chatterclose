@@ -40,7 +40,7 @@ app.use(expressSession({
     }
 }));
 var cookieParser = require('cookie-parser')
-app.use(cookieParser(process.env.cookieSecret));
+app.use(cookieParser(process.env.cookie_secret));
 
 
 app.get('/test', function (req, res) {
