@@ -28,7 +28,18 @@ function sendTextMessage(sender, text) {
 // A happy little express app
 var app = require('express')();
 
-app.use('/fart', function (req, res) {
+app.get('/test', function (req, res) {
+  res.send({ fart: true});
+})
+
+app.get('/webhook/', function (req, res) {
+  if (req.query['hub.verify_token'] === '<validation_token>') {
+    res.send(req.query['hub.challenge']);
+  }
+  res.send('Error, wrong validation token');
+})
+
+app.post('/fart', function (req, res) {
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
