@@ -3,7 +3,7 @@
 require('./secret');
 var token = process.env.MESSAGING_VERIFY_TOKEN;
 
-var lex = require('lets');
+var lex = require('./lets');
 
 function sendTextMessage(sender, text) {
   messageData = {
