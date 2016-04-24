@@ -5,25 +5,41 @@ var token = process.env.MESSAGING_VERIFY_TOKEN;
 
 var lex = require('./lets');
 
+var Client = require('node-rest-client').Client;
+
 function sendTextMessage(sender, text) {
-  messageData = {
+  var client = new Client();
+  var messageData = {
     text:text
   }
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {access_token:token},
-    method: 'POST',
-    json: {
+  var args = {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    data: {
       recipient: {id:sender},
       message: messageData,
     }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-  });
+  }
+
+  client.post('https://graph.facebook.com/v2.6/me/messages?'encodeURIComponent('access_token=' + token),args, function () {
+    console.log(arguments);
+  })
+  // request({
+  //   url: 'https://graph.facebook.com/v2.6/me/messages',
+  //   qs: {access_token:token},
+  //   method: 'POST',
+  //   json: {
+  //     recipient: {id:sender},
+  //     message: messageData,
+  //   }
+  // }, function(error, response, body) {
+  //   if (error) {
+  //     console.log('Error sending message: ', error);
+  //   } else if (response.body.error) {
+  //     console.log('Error: ', response.body.error);
+  //   }
+  // });
 }
 // A happy little express app
 var app = require('express')();
