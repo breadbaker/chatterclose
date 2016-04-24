@@ -22,7 +22,7 @@ function sendTextMessage(sender, text) {
     }
   }
 
-  client.post('https://graph.facebook.com/v2.6/me/messages?' + encodeURIComponent('access_token=' + token),args, function () {
+  client.post('https://graph.facebook.com/v2.6/me/messages?' + encodeURIComponent('access_token=' + process.env.PIP_ACCESS),args, function () {
     console.log(arguments);
   })
   // request({
