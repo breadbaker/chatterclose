@@ -3,7 +3,7 @@
 
 /* Note: using staging server url, remove .testing() for production
 Using .testing() will overwrite the debug flag with true */ 
-var LEX = require('letsencrypt-express').production();
+var LEX = require('letsencrypt-express').productionServerUrl;
 
 var lex = LEX.create({
   configDir: '/etc/letsencrypt/live/www.chatterclose.com'
