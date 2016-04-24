@@ -28,6 +28,21 @@ function sendTextMessage(sender, text) {
 // A happy little express app
 var app = require('express')();
 
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(expressSession({
+    secret : 'foo',
+    cookie: {
+        expires: false
+    }
+}));
+var cookieParser = require('cookie-parser')
+app.use(cookieParser(process.env.cookieSecret));
+
+
 app.get('/test', function (req, res) {
   res.send({ fart: true});
 })
