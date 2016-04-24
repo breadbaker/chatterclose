@@ -34,12 +34,7 @@ var cookieParser = require('cookie-parser')
 
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressSession({
-    secret : 'foo',
-    cookie: {
-        expires: false
-    }
-}));
+
 app.use(cookieParser(process.env.cookie_secret));
 
 
