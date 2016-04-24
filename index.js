@@ -22,8 +22,8 @@ function sendTextMessage(sender, text) {
     }
   }
 
-  client.post('https://graph.facebook.com/v2.6/me/messages?' + encodeURIComponent('access_token=' + process.env.PIP_ACCESS),args, function () {
-    console.log(arguments);
+  client.post('https://graph.facebook.com/v2.6/me/messages?' + encodeURIComponent('access_token=' + process.env.PIP_ACCESS),args, function (data) {
+    console.log(data.toString());
   })
   // request({
   //   url: 'https://graph.facebook.com/v2.6/me/messages',
