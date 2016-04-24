@@ -33,6 +33,7 @@ app.get('/test', function (req, res) {
 })
 
 app.get('/fart/', function (req, res) {
+  console.log('get fart');
   if (req.query['hub.verify_token'] === process.env.MESSAGING_VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   }
@@ -40,6 +41,8 @@ app.get('/fart/', function (req, res) {
 })
 
 app.post('/fart', function (req, res) {
+  console.log('post fart');
+
   messaging_events = req.body.entry[0].messaging;
   for (i = 0; i < messaging_events.length; i++) {
     event = req.body.entry[0].messaging[i];
