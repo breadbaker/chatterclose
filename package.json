@@ -1,0 +1,11 @@
+{
+  "name": "chatterclose",
+  "version": "0.0.1",
+  "description": "close chat",
+  "author": "Dan Baker danielebaker@gmail.com",
+  "license": "(MIT OR Apache-2.0)",
+  "dependencies": {
+    "letsencrypt-express": "1.1.5",
+    "express": "4.13.4"
+  }
+}
