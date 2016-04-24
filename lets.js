@@ -11,7 +11,7 @@ var lex = LEX.create({
     // Note: this is the place to check your database to get the user associated with this domain
     cb(null, {
       domains: [hostname]
-    , email: 'CHANGE_ME' // user@example.com
+    , email: 'danielebaker@gmail.com' // user@example.com
     , agreeTos: true
     });
   }
